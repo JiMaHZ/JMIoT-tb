@@ -1,0 +1,29 @@
+<div class="dashboard">
+  <div class="light-bg">
+    <dashboard-header></dashboard-header>
+    <div class="light-body">
+      <!--left-->
+      <div class="light-left">
+        <!--<div class="light-left-content">-->
+          <!--<div #mainPanel></div>-->
+        <!--</div>-->
+        <app-tab-control #tabCtrl></app-tab-control>
+      </div>
+      <!--right-->
+      <div class="light-right">
+        <div class="light-region" id="scroll-1">
+          <app-region-panel (regionEvent)="onRegionSelect($event)"></app-region-panel>
+        </div>
+        <div class="light-split"></div>
+        <div class="light-alert">
+          <app-alarm-panel></app-alarm-panel>
+        </div>
+        <div class="light-split"></div>
+        <div class="light-history">
+          <app-history-panel></app-history-panel>
+        </div>
+      </div>
+    </div>
+    <div style="height: 50px;"></div>
+  </div>
+</div>

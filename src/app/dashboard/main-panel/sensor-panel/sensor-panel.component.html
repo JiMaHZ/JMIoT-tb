@@ -1,0 +1,11 @@
+<div class="light-data" *ngIf="this.foo()">
+  <div class="light-data-title">
+    <span class="light-title-blue"></span>
+    <p>实时数据</p>
+  </div>
+  <div class="light-data-content">
+    <ul>
+      <app-sensor *ngFor="let sensor of sensorList" [sensorAttr]="sensor" (click)="onSensorClk(sensor)"></app-sensor>
+    </ul>
+  </div>
+</div>

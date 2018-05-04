@@ -1,0 +1,30 @@
+<div class="light-alert-title">
+  <span class="light-title-red"></span>
+  <p>系统报警</p>
+</div>
+<div class="light-alert-content">
+  <!-- <p-dataTable [value]=alarm>
+    <p-column field="startTs" header="时间"></p-column>
+    <p-column field="severity" header="级别"></p-column>
+    <p-column field="type" header="类型"></p-column>
+  </p-dataTable> -->
+  <div style="background-color:white">
+  <nz-table #nzTable [nzDataSource]="dataSet" [nzPageSize]="8"  >
+    <thead>
+      <tr>
+        <th nzWidth="150px">Time</th>
+        <th nzWidth="150px">Severity</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let data of nzTable.data">
+        
+        <td>{{data.time}}</td>
+        <td>{{data.severity}}</td>
+        <td>{{data.type}}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+  </div>
+</div>
