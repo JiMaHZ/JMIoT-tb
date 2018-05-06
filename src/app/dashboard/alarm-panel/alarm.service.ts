@@ -42,9 +42,10 @@ export class AlarmService {
       })
       .map(message => message.data)
       .subscribe(deviceids => {
-        console.log(deviceids);
-
-        deviceids.forEach(deviceid => {
+       // console.log(deviceids);
+        let deviceIds = new Set(deviceids);
+       // console.log(deviceIds);
+        deviceIds.forEach(deviceid => {
           this._http
             .get(this.AlarmUrl + '/' + deviceid  + '?limit=50&ascOrder=false', this.httpOption)
             .subscribe(

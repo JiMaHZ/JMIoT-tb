@@ -3,26 +3,21 @@
   <p>系统报警</p>
 </div>
 <div class="light-alert-content">
-  <!-- <p-dataTable [value]=alarm>
-    <p-column field="startTs" header="时间"></p-column>
-    <p-column field="severity" header="级别"></p-column>
-    <p-column field="type" header="类型"></p-column>
-  </p-dataTable> -->
   <div style="background-color:white">
   <nz-table #nzTable [nzAjaxData]="dataSet" [nzPageSize]="8"  >
-    <thead>
+    <thead nz-thead>
       <tr>
-        <th nzWidth="150px">Time</th>
-        <th nzWidth="150px">Severity</th>
-        <th>Type</th>
+        <th nz-th nzWidth="150px">Time</th>
+        <th nz-th nzWidth="80px">Severity</th>
+        <th nz-th nzWidth="150px">Type</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody nz-tbody>
        <tr *ngFor="let data of nzTable.data">
         
-        <td>{{data.time|timePipe}}</td>
-        <td>{{data.severity}}</td>
-        <td>{{data.type}}</td>
+        <td nz-td>{{data.time|timePipe}}</td>
+        <td nz-td>{{data.severity}}</td>
+        <td nz-td>{{data.type}}</td>
       </tr>
     </tbody>
   </nz-table>
