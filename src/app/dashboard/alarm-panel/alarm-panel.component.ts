@@ -29,29 +29,17 @@ export class AlarmPanelComponent implements OnInit {
    
             this._alarmService.getAlarmInfo()
                .subscribe(alarm => {
-                 console.log(alarm.severity);
-               
-               
-                this.dataSet.push(
-                   {
-                     time    :alarm.startTs,
-                    severity:alarm.severity,
-                    type    :alarm.type,
-                  });       
-                 console.log(this.dataSet);   
-               
-                           
-               });
-           
-             
-             
-          //   for (let i = 0; i <50; i++) {
-          //    this.dataSet.push({
-          //      time   : `Edward King ${i}`,
-          //      severity    : 32,
-          //      type: `London, Park Lane no. ${i}`
-          //   });
-          //   console.log(this.dataSet);
-          //  }
+                 if(alarm.severity !== undefined){
+                  console.log(alarm.severity);
+                  this.dataSet.push(
+                     {
+                       time    :alarm.startTs,
+                      severity:alarm.severity,
+                      type    :alarm.type,
+                    });       
+                   console.log(this.dataSet); 
+                  }           
+                 });
+         
   }
 }

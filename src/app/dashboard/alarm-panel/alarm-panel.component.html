@@ -9,7 +9,7 @@
     <p-column field="type" header="类型"></p-column>
   </p-dataTable> -->
   <div style="background-color:white">
-  <nz-table #nzTable [nzDataSource]="dataSet" [nzPageSize]="8"  >
+  <nz-table #nzTable [nzAjaxData]="dataSet" [nzPageSize]="8"  >
     <thead>
       <tr>
         <th nzWidth="150px">Time</th>
@@ -20,7 +20,7 @@
     <tbody>
        <tr *ngFor="let data of nzTable.data">
         
-        <td>{{data.time}}</td>
+        <td>{{data.time|timePipe}}</td>
         <td>{{data.severity}}</td>
         <td>{{data.type}}</td>
       </tr>

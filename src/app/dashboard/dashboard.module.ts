@@ -13,12 +13,9 @@ import {MainPanelComponent} from "./main-panel/main-panel.component";
 import {WebsocketService} from "./websocket.service";
 import {TabControlComponent} from "./tab-control/tab-control.component";
 import { EchartsNg2Module } from 'echarts-ng2';
-
-//import {MdTableModule} from '@angular/material';
-//import {DataTableModule,SharedModule} from 'primeng/primeng';
 import {NgZorroAntdModule } from 'ng-zorro-antd';
-
 import {AlarmService} from "./alarm-panel/alarm.service";
+import { TimePipePipe } from './time-pipe.pipe';
 
 @NgModule({
   imports: [
@@ -27,10 +24,8 @@ import {AlarmService} from "./alarm-panel/alarm.service";
     RouterModule,
     EchartsNg2Module,
     RouterModule.forChild(dashboardRoutes),
-   // MdTableModule,
     NgZorroAntdModule,
-    //DataTableModule,
-    //SharedModule
+    
   ],
   declarations: [
     DashboardComponent,
@@ -38,7 +33,8 @@ import {AlarmService} from "./alarm-panel/alarm.service";
     RegionPanelComponent,
     AlarmPanelComponent,
     HistoryPanelComponent,
-    TabControlComponent
+    TabControlComponent,
+    TimePipePipe
   ],
   providers: [UserService, WebsocketService, AlarmService],
   entryComponents: [MainPanelComponent],
