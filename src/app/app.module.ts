@@ -3,6 +3,7 @@ import {NgModule} from "@angular/core";
 import {HttpModule, JsonpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {NgZorroAntdModule } from 'ng-zorro-antd';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {AppComponent} from "./app.component";
 import {UserModule} from "./user/user.module";
@@ -18,6 +19,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     JsonpModule,
     RouterModule,
