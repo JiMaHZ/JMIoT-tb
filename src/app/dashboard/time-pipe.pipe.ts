@@ -8,7 +8,7 @@ export class TimePipePipe implements PipeTransform {
   transform(value: any): any {
     let unixTime = new Date(value);
     let year = unixTime.getFullYear();
-    let month = unixTime.getMonth()+1;
+    let month = unixTime.getMonth();
     let day = unixTime.getDate();
     let hour = unixTime.getHours();
     let minute = unixTime.getMinutes();
