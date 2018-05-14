@@ -10,6 +10,36 @@
     <p class="data-small-gray">
       {{time | timePipe}}
     </p>
+    <p>
+      <button nz-button [nzType]="'default'" (click)="showModal()">
+        <span>历史曲线</span>
+      </button>
+      <nz-modal [nzVisible]="isVisible" [nzTitle]="modalTitle" [nzWidth]="'800px'"
+      [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
+        <ng-template #modalTitle>
+          {{sensorAttr.name}}
+        </ng-template>
+        <ng-template #modalContent>
+          <div style="float:left; margin-left:10px; margin-top:2px;">
+            <input type="radio" class="timeCheckRadio_cls" id="oneDay"
+              name="timeCheckRadio" checked="checked" />最近一天
+            </div>
+          <div style="float:left; margin-left:15px; margin-top:2px;">
+            <input type="radio" class="timeCheckRadio_cls" id="oneWeek"
+              name="timeCheckRadio" />最近一周
+           </div>
+          <div style="float:left; margin-left:15px; margin-top:2px;">
+            <input type="radio" class="timeCheckRadio_cls" id="oneMonth"
+             name="timeCheckRadio" />最近一月
+          </div>
+          <div style="float:left; margin-left:15px; margin-top:2px;">
+            <input type="radio" class="timeCheckRadio_cls" id="threeMonth"
+              name="timeCheckRadio" />最近三月
+          </div>
+          <div [chart] = "stock"></div>
+        </ng-template>
+      </nz-modal>
+    </p>
   </div>
 
   <ng-template #elseP>

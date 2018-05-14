@@ -8,10 +8,19 @@ import { TwoStateComponent } from './controller-panel/two-state/two-state.compon
 import { ThreeStateComponent } from './controller-panel/three-state/three-state.component';
 import {TransformPipe} from "./sensor-panel/sensor/transform-pipe";
 import { TimePipePipe } from './time-pipe.pipe';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import {ChartModule,HIGHCHARTS_MODULES} from 'angular-highcharts';
+import stock from 'highcharts/modules/stock.src';
+import more from 'highcharts/highcharts-more.src';
 
+export function highchartsModules() {
+  return [stock,more];
+}
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgZorroAntdModule,
+    ChartModule,
   ],
   exports: [
     MainPanelComponent
@@ -25,6 +34,7 @@ import { TimePipePipe } from './time-pipe.pipe';
     ThreeStateComponent,
     TransformPipe,
     TimePipePipe
-  ]
+  ],
+  providers: [{provide:HIGHCHARTS_MODULES,useFactory:highchartsModules}],
 })
 export class MainPanelModule { }
