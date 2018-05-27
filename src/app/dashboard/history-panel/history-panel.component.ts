@@ -33,13 +33,13 @@ export class HistoryPanelComponent  {
              }else if(msg.name){
                // subscribe for latest data.
                let data = msg.data;
-               console.log(data);
+               //console.log(data);
                let latest = [];
                latest.push(data.time);
                latest.push(data.data);
-               if(this._data.length >= 50){
-                 this._data.shift();
-             }
+            //    if(this._data.length >= 50){
+            //      this._data.shift();
+            //  }
              this._data.push(latest);
              this.option = this.getOpt(this._data, sensor.name);
              }

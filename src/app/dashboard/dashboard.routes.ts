@@ -2,11 +2,11 @@ import {DashboardComponent} from "./dashboard.component";
 export const dashboardRoutes=[
   {
     path:'',
-    redirectTo:'main',
+    redirectTo:'dashboard',
     pathMatch:'full'
   },
   {
-    path:'main',
+    path:'dashboard',
     component: DashboardComponent
   }
 ];

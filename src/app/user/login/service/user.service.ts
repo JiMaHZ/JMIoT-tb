@@ -29,10 +29,10 @@ export class UserService {
 
   private httpOption: RequestOptions;
   /*add*/
-  private _deviceIds = [];
-  get deviceIds() {
-    return this._deviceIds;
-  }
+  // private _deviceIds = [];
+  // get deviceIds() {
+  //   return this._deviceIds;
+  // }
 
   constructor(private http: Http) {
     let token = localStorage.getItem("token");
@@ -88,12 +88,12 @@ export class UserService {
                // let data = response.json().data;
                const data = response.json().data;
                 //console.log(data);
-                //let deviceIds = [];
+                let deviceIds = [];
 
                 data.map(ele => {
-                  this.deviceIds.push(ele.id.id);
+                  deviceIds.push(ele.id.id);
                 });
-                subject.next(new Message("deviceList", this.deviceIds));
+                subject.next(new Message("deviceList", deviceIds));
               })
           })
       })

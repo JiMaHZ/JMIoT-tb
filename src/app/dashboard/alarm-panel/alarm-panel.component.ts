@@ -29,12 +29,12 @@ export class AlarmPanelComponent implements OnInit {
    
             this._alarmService.getAlarmInfo()
                .subscribe(alarm => {
-                 if(alarm.severity !== undefined){
-                  console.log(alarm.severity);
+                 if(alarm.status !== undefined){
+                  console.log(alarm.status);
                   this.dataSet.push(
                      {
                        time    :alarm.startTs,
-                      severity:alarm.severity,
+                      status:alarm.status,
                       type    :alarm.type,
                     });       
                    console.log(this.dataSet); 

@@ -57,7 +57,7 @@ export class AlarmService {
                auth_alarm.map(ele => {
                  
                   alarm.startTs = ele.startTs;
-                  alarm.severity = ele.severity;
+                  alarm.status= ele.status;
                   alarm.type = ele.type;
                   
                 });

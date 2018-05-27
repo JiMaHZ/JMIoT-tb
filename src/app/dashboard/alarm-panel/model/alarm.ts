@@ -1,5 +1,5 @@
 export class Alarm {
     startTs: number;
-    severity:string;
+    status:string;
     type: string;
 }
