@@ -1,8 +1,9 @@
 <div class="login">
+    <nz-spin  [nzTip]="'正在加載中...'"[nzSize]="'large'" [nzSpinning]="_isSpinning">
   <div class="header">
     <h2>智慧物联网平台</h2>
   </div>
-  <div class="middle">
+  <div class="middle"> 
     <div class="loginbox">
       <input [(ngModel)]="username" type="text" class="username" placeholder="邮箱">
       <input [(ngModel)]="password" type="password" class="password" placeholder="密码">
@@ -44,4 +45,5 @@
   <div class="footer">
     Copyright © 2018 杭州极码科技有限公司
   </div>
+</nz-spin> 
 </div>

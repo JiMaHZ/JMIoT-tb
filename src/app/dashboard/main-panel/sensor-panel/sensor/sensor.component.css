@@ -85,3 +85,10 @@ li .data-value .data-small-gray{
   margin-right: 5px;
   font-size: 12px;
 }
+
+.spining {
+  width: 700px;
+  height:500px;
+  text-align: left;
+  z-index: 100;
+}

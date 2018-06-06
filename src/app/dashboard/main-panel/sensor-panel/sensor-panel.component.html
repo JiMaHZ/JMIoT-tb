@@ -5,7 +5,7 @@
   </div>
   <div class="light-data-content">
     <ul>
-      <app-sensor *ngFor="let sensor of sensorList" [sensorAttr]="sensor" (click)="onSensorClk(sensor)"></app-sensor>
+      <app-sensor *ngFor="let sensor of sensorList" [sensorAttr]="sensor" (periodChanged)="periodChanged($event)"></app-sensor>
     </ul>
   </div>
 </div>

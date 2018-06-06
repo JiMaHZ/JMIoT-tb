@@ -1,25 +1,37 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit,Output, EventEmitter} from '@angular/core';
 import {Sensor} from "../../../model/sensor";
 import {WebsocketService} from "../../../websocket.service";
 //import {StockChart} from 'angular-highcharts';
 import {EChartOption} from 'echarts-ng2';
-
+import {timeOption} from './../../../model/timeOption';
 @Component({
   selector: 'app-sensor',
   templateUrl: './sensor.component.html',
   styleUrls: ['./sensor.component.css']
 })
 export class SensorComponent implements OnInit {
-
+@Output() periodChanged = new EventEmitter<any>();
  // stock:StockChart;
  //历史曲线
  chartOption :EChartOption;
  private _data: Array<Array<any>>;
  //弹出框
+ //历史曲线时间选择
+ //加载中
+ _isSpin = true;
+timeoption1 = 90;
+ public timeOption:timeOption = new timeOption();
+ print(num:number){
+   this.timeoption1 = num;
+   this.timeOption._timeIn = this.timeoption1;
+   this.periodChanged.emit({sensor: this.sensorAttr, timeOption: this.timeOption});
+ }
   isVisible = false;
 
   showModal = () => {
     this.isVisible = true;
+    this.timeoption1 = 90;
+    this.print(this.timeoption1);
   }
 
   handleOk = (e) => {
@@ -31,7 +43,6 @@ export class SensorComponent implements OnInit {
     console.log(e);
     this.isVisible = false;
   }
-
   public sensorType: SensorType = new SensorType();
 
   @Input() sensorAttr: Sensor;
@@ -47,7 +58,7 @@ export class SensorComponent implements OnInit {
   ngOnInit() {
     console.log("in sensor component:");
     console.log(this.sensorAttr);
-
+    
     switch (this.sensorAttr.config.type){
       case "温度": {
         this.sensorType.classStr = "data-type-temperature";
@@ -88,9 +99,8 @@ export class SensorComponent implements OnInit {
 
         this.value = data.data;
       });
-
-
-      this._websocketService.historicalSubject
+      
+        this._websocketService.historicalSubject
       .subscribe(sensor => {
 
         this._websocketService.valSubject
@@ -98,6 +108,7 @@ export class SensorComponent implements OnInit {
             if(msg.name == `!${sensor.key}@${sensor.parentInfo.entityId}`){
               // subscribe for historical data.
               this._data = msg.data;
+              this._isSpin = false;
               this.chartOption = this.getOpt(this._data, sensor.name);
             }else if(msg.name){
               // subscribe for latest data.
@@ -110,11 +121,12 @@ export class SensorComponent implements OnInit {
             //     this._data.shift();
             // }
             this._data.push(latest);
+            this._isSpin = false;
             this.chartOption = this.getOpt(this._data, sensor.name);
             }
           })
       });
-
+      
   }
 
   private getOpt(data: Array<Array<any>>, name: string): EChartOption {

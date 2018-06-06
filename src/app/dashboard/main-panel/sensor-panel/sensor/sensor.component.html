@@ -16,12 +16,30 @@
       [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
         <ng-template #modalTitle>
           历史曲线
-        </ng-template>
+          <br>
+          <nz-radio-group [ngModel]="timeoption1"(ngModelChange)="timeoption1=$event;print(timeoption1)">
+            <label nz-radio [nzValue]="1">
+              <span>最近一天</span>
+            </label>
+            <label nz-radio [nzValue]="7">
+              <span>最近一周</span>
+            </label>
+            <label nz-radio [nzValue]="30">
+              <span>最近一月</span>
+            </label>
+            <label nz-radio [nzValue]="90">
+              <span>最近三月</span>
+            </label>
+          </nz-radio-group>
+        </ng-template>    
         <ng-template #modalContent>
           <!-- <div [chart] = "stock"></div> -->
-          <echarts-ng2 [option]="chartOption" [style]="{'width': '700px', 'height': '500px', 'display': 'inline-block'}">
-              <nz-spin [nzTip] = "'正在努力加载数据...'"></nz-spin>
-          </echarts-ng2>
+         <div class="spining">
+          <nz-spin [nzTip] = "'正在努力加载数据...'" [nzSpinning] = "_isSpin">  
+            <echarts-ng2 [option]="chartOption" [style]="{'width': '700px', 'height': '500px', 'display': 'inline-block'}"> 
+            </echarts-ng2>
+          </nz-spin>
+         </div>
         </ng-template>
       </nz-modal>
     </p>

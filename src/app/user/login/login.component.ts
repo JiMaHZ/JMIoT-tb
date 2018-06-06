@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  _isSpinning=false;
   public username: string;
   public password: string;
 
@@ -21,12 +21,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void{
+    this._isSpinning = true;
     this.login();
   }
 
   private login(): void{
     this.userService.login(this.username,this.password)
       .then(() => {
+        this._isSpinning = false;
         console.log("login success!");
         this.router.navigateByUrl("dashboard");
       })

@@ -13,7 +13,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 // import stock from 'highcharts/modules/stock.src';
 // import more from 'highcharts/highcharts-more.src';
 import { EchartsNg2Module } from 'echarts-ng2';
-
+import { FormsModule } from '@angular/forms';
+import { NgModel } from '@angular/forms/src/directives/ng_model';
 // export function highchartsModules() {
 //   return [stock,more];
 // }
@@ -22,7 +23,8 @@ import { EchartsNg2Module } from 'echarts-ng2';
     CommonModule,
     NgZorroAntdModule,
    // ChartModule,
-   EchartsNg2Module
+   EchartsNg2Module,
+   FormsModule
   ],
   exports: [
     MainPanelComponent

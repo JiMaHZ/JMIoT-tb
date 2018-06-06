@@ -56,17 +56,17 @@ export class WebsocketService {
     this.webSocketSubject.next(cmd);
   }
 
-  getHistoryDataByDeviceId(entityId: string, sensorKey:string): void{
+  getHistoryDataByDeviceId(entityId: string, sensorKey:string,timeOption:any): void{
     let cmd = new CmdWrapper();
     cmd.tsSubCmds = [];
-    let timeSeriesCmd = new TimeseriesCmd();
+    const timeSeriesCmd = new TimeseriesCmd();
     timeSeriesCmd.entityId = entityId;
-    timeSeriesCmd.startTs = new Date().getTime() - 604800000;
-    timeSeriesCmd.timeWindow = 604800000  ;
+    timeSeriesCmd.timeWindow = timeOption._timeIn*24*3600000  ;
+    timeSeriesCmd.startTs = new Date().getTime() - timeOption._timeIn*24*3600000;
     // timeSeriesCmd.startTs = 1498118852000;
     // timeSeriesCmd.timeWindow = new Date().getTime() -  1498118852000 ;
 
-    timeSeriesCmd.limit = 500;
+   // timeSeriesCmd.limit = 500;
     timeSeriesCmd.entityType="DEVICE";
 
     timeSeriesCmd.interval = 1000*5;

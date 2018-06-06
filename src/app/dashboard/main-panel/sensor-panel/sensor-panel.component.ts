@@ -24,10 +24,10 @@ export class SensorPanelComponent implements OnInit {
     return this.sensorList.length > 0;
   }
 
-  onSensorClk(sensor: Sensor) {
+  periodChanged({sensor,timeOption}) {
     console.log(sensor);
-
+    console.log(timeOption);
     this._websocketService.historicalSubject.next(sensor);
-    this._websocketService.getHistoryDataByDeviceId(sensor.parentInfo.entityId,sensor.key);
+    this._websocketService.getHistoryDataByDeviceId(sensor.parentInfo.entityId,sensor.key,timeOption);
   }
 }
