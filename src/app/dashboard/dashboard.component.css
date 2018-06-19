@@ -83,8 +83,10 @@
   width:25px;
   height:158px;
 }
-#scroll-1::-webkit-scrollbar-button    {
 
+:host ::ng-deep .ant-back-top {
+  background-color: #1088e9;
+  border-radius: 20px;
 }
 #scroll-1::-webkit-scrollbar-track     {
   background:#c5c5c5;

@@ -19,7 +19,7 @@ export class SensorComponent implements OnInit {
  //历史曲线时间选择
  //加载中
  _isSpin = true;
-timeoption1 = 90;
+timeoption1 = 7;
  public timeOption:timeOption = new timeOption();
  print(num:number){
    this.timeoption1 = num;
@@ -30,7 +30,7 @@ timeoption1 = 90;
 
   showModal = () => {
     this.isVisible = true;
-    this.timeoption1 = 90;
+    this.timeoption1 = 7;
     this.print(this.timeoption1);
   }
 
@@ -93,7 +93,7 @@ timeoption1 = 90;
       .filter(msg => msg.name == `${this.sensorAttr.key}@${this.sensorAttr.parentInfo.entityId}`)
       .map(msg => msg.data)
       .subscribe(data => {
-        // console.log(data);
+         //console.log(data);
         this.time = data.time;
         // this.time = this._datePipe.transform(data.time,'yyyy-MM-dd HH:mm:ss');
 
@@ -110,20 +110,20 @@ timeoption1 = 90;
               this._data = msg.data;
               this._isSpin = false;
               this.chartOption = this.getOpt(this._data, sensor.name);
-            }else if(msg.name){
-              // subscribe for latest data.
-              let data = msg.data;
-             // console.log(data);
-              let latest = [];
-              latest.push(data.time);
-              latest.push(data.data);
-            //   if(this._data.length >= 500){
-            //     this._data.shift();
-            // }
-            this._data.push(latest);
-            this._isSpin = false;
-            this.chartOption = this.getOpt(this._data, sensor.name);
             }
+            // else if(msg.name){
+            //   // subscribe for latest data.
+            //   let data = msg.data;
+            //   let latest = [];
+            //   latest.push(data.time);
+            //   latest.push(data.data);
+            // //   if(this._data.length >= 500){
+            // //     this._data.shift();
+            // // }
+            // this._data.push(latest);
+            // this._isSpin = false;
+            // this.chartOption = this.getOpt(this._data, sensor.name);
+            // }
           })
       });
       

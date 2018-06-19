@@ -57,7 +57,7 @@ li {
   width: 63px;
   height: 26px;
   background: url(/assets/img/foreward.png) no-repeat;
-
+  cursor: pointer;
 }
 
 .control-panel .control-button-pause {
@@ -72,7 +72,7 @@ li {
 .control-panel .control-button-inversion {
   display: inline-block;
   margin-top: 5px;
-  width: 63px;
+  width: 61px;
   height: 26px;
   background: url(/assets/img/inversion.png) no-repeat;
   cursor: pointer;
