@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
       .then(() => {
         this._isSpinning = false;
         console.log("login success!");
-        this.router.navigateByUrl("dashboard");
+        this.router.navigateByUrl("dashboard"); 
+        window.location.reload(); 
       })
       .catch(err => {
         console.info("login failure");

@@ -66,7 +66,7 @@ export class WebsocketService {
     // timeSeriesCmd.startTs = 1498118852000;
     // timeSeriesCmd.timeWindow = new Date().getTime() -  1498118852000 ;
 
-    timeSeriesCmd.limit = 500;
+    timeSeriesCmd.limit = 50000;
     timeSeriesCmd.entityType="DEVICE";
 
     timeSeriesCmd.interval = 1000*5;

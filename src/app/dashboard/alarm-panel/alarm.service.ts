@@ -42,26 +42,24 @@ export class AlarmService {
       })
       .map(message => message.data)
       .subscribe(deviceids => {
-       // console.log(deviceids);
-        let deviceIds = new Set(deviceids);
+        console.log(deviceids);
+        //let deviceIds = new Set(deviceids);
        // console.log(deviceIds);
-        deviceIds.forEach(deviceid => {
+        deviceids.forEach(deviceid => {
           this._http
             .get(this.AlarmUrl + '/' + deviceid  + '?limit=50&ascOrder=false', this.httpOption)
             .subscribe(
               response => {
                 const auth_alarm = response.json().data;
-                 
                 const alarm = new Alarm();
         
                auth_alarm.map(ele => {
-                 
                   alarm.startTs = ele.startTs;
                   alarm.status= ele.status;
                   alarm.type = ele.type;
-                  
+                  subject.next(alarm);
                 });
-                subject.next(alarm);
+               // subject.next(alarm);
               },
               error => {
                 console.log(error);

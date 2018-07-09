@@ -11,7 +11,6 @@ import {AlarmService} from "./alarm.service";
 
 export class AlarmPanelComponent implements OnInit {
   dataSet = [];
-  public alarms = new Array<any>();
 
    constructor(
      private _alarmService: AlarmService
@@ -29,16 +28,12 @@ export class AlarmPanelComponent implements OnInit {
    
             this._alarmService.getAlarmInfo()
                .subscribe(alarm => {
-                 if(alarm.status !== undefined){
-                  console.log(alarm.status);
                   this.dataSet.push(
                      {
-                       time    :alarm.startTs,
-                      status:alarm.status,
+                       time   :alarm.startTs,
+                      status  :alarm.status,
                       type    :alarm.type,
                     });       
-                   console.log(this.dataSet); 
-                  }           
                  });
          
   }

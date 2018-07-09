@@ -93,7 +93,7 @@ timeoption1 = 7;
       .filter(msg => msg.name == `${this.sensorAttr.key}@${this.sensorAttr.parentInfo.entityId}`)
       .map(msg => msg.data)
       .subscribe(data => {
-         //console.log(data);
+         console.log(data);
         this.time = data.time;
         // this.time = this._datePipe.transform(data.time,'yyyy-MM-dd HH:mm:ss');
 
@@ -123,7 +123,7 @@ timeoption1 = 7;
             // this._data.push(latest);
             // this._isSpin = false;
             // this.chartOption = this.getOpt(this._data, sensor.name);
-            // }
+           // }
           })
       });
       
