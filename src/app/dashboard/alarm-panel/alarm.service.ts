@@ -17,8 +17,8 @@ import { Observable } from 'rxjs/Observable';
 export class AlarmService {
  // private AlarmUrl =  "http://" + environment.serverUrl + "/api/plugins/telemetry/DEVICE";
  private AlarmUrl =   environment.serverUrl + "/alarm/DEVICE";
-  private httpOption: RequestOptions;
-  
+ private httpOption: RequestOptions;
+
   constructor(
     private _http: Http,
     private _userService: UserService
@@ -33,6 +33,19 @@ export class AlarmService {
     });
   }
 
+  //得到设备名称
+  getDeviceName(deviceid:string): Observable<any>{
+    return this._http
+               .get('/api/device/'+deviceid,
+                this.httpOption)
+                .map(response => {
+                  let deviceName = response.json().name;
+                  return deviceName;
+                });
+                //清楚警告，需要用到alarmID
+                //http://140.143.23.199:8080/api/alarm/545e2aa0-8577-11e8-ad4b-4dd707116a31/clear
+  }
+
   getAlarmInfo(): Subject<Alarm> {
     const subject = new Subject<Alarm>();
     
@@ -43,7 +56,7 @@ export class AlarmService {
       .map(message => message.data)
       .subscribe(deviceids => {
         console.log(deviceids);
-        //let deviceIds = new Set(deviceids);
+        // this.deviceId = new Set(deviceids);
        // console.log(deviceIds);
         deviceids.forEach(deviceid => {
           this._http
@@ -51,12 +64,18 @@ export class AlarmService {
             .subscribe(
               response => {
                 const auth_alarm = response.json().data;
-                const alarm = new Alarm();
-        
+                let alarm = new Alarm();
                auth_alarm.map(ele => {
                   alarm.startTs = ele.startTs;
                   alarm.status= ele.status;
-                  alarm.type = ele.type;
+                  alarm.type = ele.type;   
+                  let varia = ele.originator.id;
+                  let devicename = '';
+                 this.getDeviceName(varia).subscribe(val => {console.log(val);
+                  alarm.device = val;
+                  console.log(alarm.device);
+                 });
+                 console.log(alarm.device);
                   subject.next(alarm);
                 });
                // subject.next(alarm);
