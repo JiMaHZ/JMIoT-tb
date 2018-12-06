@@ -3,4 +3,6 @@ export class Alarm {
     status:string;
     type: string;
     device:string;
+    alarmType?:string;
+    deviceId?:string;
 }
